@@ -7,7 +7,6 @@ function Filter(props){
     useEffect(()=> {
         fetchData()
     }, [])
-
     const fetchData = async () => {
         const response = await axios.get('https://fakestoreapi.com/products/categories')
         setCategories(response.data)
