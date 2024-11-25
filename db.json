@@ -239,155 +239,21 @@
         "rate": 3.6,
         "count": 145
       }
-    },
-    {
-      "id": "f9da",
-      "title": "Mens Casual Premium Slim Fit T-Shirts (Black)",
-      "price": 22.3,
-      "description": "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
-      "category": "men's clothing",
-      "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
-      "rating": {
-        "rate": 4.1,
-        "count": 259
-      }
-    },
-    {
-      "id": "1",
-      "title": "Sample Data",
-      "price": 109.95,
-      "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-      "category": "men's clothing",
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "rating": {
-        "rate": 3.9,
-        "count": 120
-      }
-    },
-    {
-      "id": "7e5c",
-      "title": "Sample Data",
-      "price": 109.95,
-      "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-      "category": "men's clothing",
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "rating": {
-        "rate": 3.9,
-        "count": 120
-      }
     }
   ],
   "order": [
     {
-      "name": "",
-      "lname": "",
-      "email": "",
-      "mobile": "",
-      "house": "",
-      "street": "",
-      "city": "",
-      "state": "",
-      "country": "",
-      "zipcode": "",
+      "name": "Name",
+      "lname": "Last",
+      "email": "name@mail.com",
+      "mobile": "8880000000",
+      "house": "102",
+      "street": "near sample road",
+      "city": "Fake",
+      "state": "State",
+      "country": "Country",
+      "zipcode": "098123",
       "id": "8e96"
-    },
-    {
-      "id": "7f65",
-      "name": "a",
-      "lname": "s",
-      "mobile": "-3",
-      "email": "2",
-      "house": "2",
-      "street": "2",
-      "country": "India",
-      "state": "Maharashtra",
-      "zipcode": "217"
-    },
-    {
-      "id": "9d5c",
-      "name": "",
-      "lname": "",
-      "email": "",
-      "mobile": "",
-      "house": "",
-      "street": "",
-      "city": "",
-      "state": "",
-      "country": "",
-      "zipcode": ""
-    },
-    {
-      "id": "2aa9",
-      "name": "",
-      "lname": "",
-      "email": "",
-      "mobile": "",
-      "house": "",
-      "street": "",
-      "city": "",
-      "state": "",
-      "country": "",
-      "zipcode": ""
-    },
-    {
-      "id": "61eb",
-      "name": "s",
-      "lname": "s",
-      "email": "",
-      "mobile": "",
-      "house": "",
-      "street": "",
-      "city": "",
-      "state": "",
-      "country": "",
-      "zipcode": ""
-    },
-    {
-      "id": "08c9",
-      "name": "s",
-      "lname": "",
-      "mobile": "",
-      "house": "",
-      "street": "",
-      "city": "",
-      "state": "",
-      "country": "",
-      "zipcode": ""
-    },
-    {
-      "id": "3e20",
-      "name": ""
-    },
-    {
-      "id": "72e8",
-      "name": "Swapnil",
-      "lname": "Thakre",
-      "mobile": "8055255151",
-      "email": "swapnil@gmail.com",
-      "house": "123",
-      "street": "123",
-      "country": "India",
-      "state": "Maharashtra",
-      "zipcode": "443986"
-    },
-    {
-      "id": "0bc0",
-      "name": "a",
-      "lname": "s",
-      "mobile": "2",
-      "email": "2"
-    },
-    {
-      "id": "bc74",
-      "name": "Swapnil",
-      "lname": "Thakre",
-      "mobile": "8055255151",
-      "email": "swpanil@gmail.com",
-      "house": "10",
-      "street": "Nandanwan",
-      "country": "India",
-      "state": "Maharashtra",
-      "zipcode": "439978"
     }
   ]
 }
