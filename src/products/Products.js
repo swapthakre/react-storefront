@@ -18,8 +18,9 @@ function Products(){
         .catch(error => console.error(error)) 
 
         const oldCart = localStorage.getItem('cart')
-        console.log(oldCart)
-        setCart(JSON.parse(oldCart))
+        if(oldCart){
+            setCart(JSON.parse(oldCart))
+        }
     },[])
 
 
@@ -44,8 +45,10 @@ function Products(){
     return(
         <section>
                 <div className="container px-4 px-lg-5 mt-5 d-flex justify-content-between">
-                    <Filter setCategory={setCategory}  />
-                    <Link to="/checkout"><Cart cart={cart} /> </Link>
+                    <Filter setCategory={setCategory} />
+                    {cart.length ? 
+                    <Link to="/checkout"><Cart cart={cart} /> </Link> :
+                    <Cart cart={cart} />}
                 </div>
                 <div className="container px-4 px-lg-5 mt-5">
                     <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">

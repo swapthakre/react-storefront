@@ -26,8 +26,8 @@ function Card(props){
                             {/* <div className="bi-star-half-fill"></div> */}
                         </div>
                         
-                        <span className="text-muted text-decoration-line-through">₹{product.price * 119}</span>
-                        ₹{product.price * 84}
+                        <span className="text-muted text-decoration-line-through">₹{(product.price * 119).toFixed(2)}</span>
+                        ₹{(product.price * 84).toFixed(2)}
                     </div>
                 </div>
                 

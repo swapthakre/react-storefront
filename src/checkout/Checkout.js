@@ -1,12 +1,10 @@
+import axios from "axios";
 import { useState, useEffect } from "react";
 
 function Checkout(){
     const [ cart, setCart] = useState([])
-    const [ userDetail, setUserDetail] = useState({
-        name: "",
-        lname: "",
-        mobile: ""
-    })
+    const [ userDetail, setUserDetail] = useState({})
+    const [orderPlaced, setOrderPlaced] = useState(false)
 
     useEffect(() => {
         const products = localStorage.getItem('cart')
@@ -14,25 +12,24 @@ function Checkout(){
     }, [])
 
     function formDetails(event){
-        // console.log(event.target.name, event.target.value);
-        // const key = event.target.name
-        // const value = event.target.value
-        // console.log({key: value})
-        // setUserDetail({...userDetail, [key]: value})
+        console.log(event.target.name, event.target.value);
+        const key = event.target.name
+        const value = event.target.value
+        console.log(userDetail)
+        setUserDetail({...userDetail, [key]: value})
 
-        console.log({'name': "Swapnil", 'lname': "Thakre",  'lname': "Thackray"})
     }
 
-    useEffect(() => {
-        console.log(userDetail)
-    }, [userDetail])
-
-
-
+    const handleSubmit = (e) => {
+        e.preventDefault();  // Prevents the default form submission
+        axios.post('http://localhost:3030/order', JSON.stringify(userDetail))
+        .then((res) => setOrderPlaced(true))
+        .catch(err => console.error(err))
+      };
 
     return(
         <div className="container">
-            <main>
+            {orderPlaced ? <h2>Thank You! Your Order is placed</h2> : <main>
                 <div className="py-5 text-center">
                 <h2>Checkout form</h2>
                 <p className="lead">Please check the product before confirming the order.</p>
@@ -67,7 +64,7 @@ function Checkout(){
                     </li> */}
                     <li className="list-group-item d-flex justify-content-between">
                         <span>Total (INR)</span>
-                        <strong>{cart.reduce((acc, curr) =>  acc + curr.price, 0)}</strong>
+                        <strong>{cart.reduce((acc, curr) =>  acc + curr.price * 83, 0)}</strong>
                     </li>
                     </ul>
 
@@ -80,7 +77,7 @@ function Checkout(){
                 </div>
                 <div className="col-md-7 col-lg-8">
                     <h4 className="mb-3">Billing address</h4>
-                    <form className="needs-validation" novalidate="">
+                    <form className="needs-validation" onSubmit={handleSubmit} novalidate="">
                     <div className="row g-3">
                         <div className="col-sm-6">
                             <label for="firstName" className="form-label">First name</label>
@@ -99,7 +96,7 @@ function Checkout(){
                         </div>
 
                         <div className="col-12">
-                        <label for="username" className="form-label">Mobile</label>
+                        <label for="mobile" className="form-label">Mobile</label>
                         <div className="input-group has-validation">
                             <span className="input-group-text">+91</span>
                             <input type="number" name="mobile" className="form-control" id="mobile" placeholder="Mobile" required onInput={(e) =>  formDetails(e)} />
@@ -111,25 +108,26 @@ function Checkout(){
 
                         <div className="col-12">
                         <label for="email" className="form-label">Email <span className="text-body-secondary">(Optional)</span></label>
-                        <input type="email" className="form-control" id="email" placeholder="you@example.com" />
+                        <input type="email" className="form-control" id="email" placeholder="you@example.com" name="email" onInput={(e) => formDetails(e)} />
                         <div className="invalid-feedback">
                             Please enter a valid email address for shipping updates.
                         </div>
                         </div>
                         <div className="col-12">
-                        <label for="address" className="form-label">Address</label>
-                        <input type="text" className="form-control" id="address" placeholder="1234 Main St" required="" />
+                        <label for="house" className="form-label">House <span className="text-body-secondary">(Optional)</span></label>
+                        <input type="text" className="form-control" id="house" placeholder="Apartment or suite" name="house" onInput={(e) => formDetails(e)} />
+                        </div>
+                        <div className="col-12">
+                        <label for="street" className="form-label">Street</label>
+                        <input type="text" className="form-control" id="address" placeholder="1234 Main St" required="" name="street" onInput={(e) => formDetails(e)} />
                         <div className="invalid-feedback">
                             Please enter your shipping address.
                         </div>
                         </div>
-                        <div className="col-12">
-                        <label for="address2" className="form-label">Address 2 <span className="text-body-secondary">(Optional)</span></label>
-                        <input type="text" className="form-control" id="address2" placeholder="Apartment or suite" />
-                        </div>
+                        
                         <div className="col-md-5">
                         <label for="country" className="form-label">Country</label>
-                        <select className="form-select" id="country" required="">
+                        <select className="form-select" id="country" required="" onChange={(e) => formDetails(e)} name="country">
                             <option value="">Choose...</option>
                             <option>India</option>
                         </select>
@@ -139,7 +137,7 @@ function Checkout(){
                         </div>
                         <div className="col-md-4">
                         <label for="state" className="form-label">State</label>
-                        <select className="form-select" id="state" required="">
+                        <select className="form-select" id="state" required="" onChange={(e) => formDetails(e)} name="state">
                             <option value="">Choose...</option>
                             <option>Maharashtra</option>
                         </select>
@@ -150,7 +148,7 @@ function Checkout(){
 
                         <div className="col-md-3">
                         <label for="zip" className="form-label">Zip</label>
-                        <input type="text" className="form-control" id="zip" placeholder="" required="" />
+                        <input type="number" className="form-control" id="zip" placeholder="" required="" name="zipcode" onInput={(e) => formDetails(e)} />
                         <div className="invalid-feedback">
                             Zip code required.
                         </div>
@@ -159,17 +157,13 @@ function Checkout(){
 
                     <hr className="my-4" />
 
-                    <div className="form-check">
+                    {/* <div className="form-check">
                         <input type="checkbox" className="form-check-input" id="same-address" />
                         <label className="form-check-label" for="same-address">Shipping address is the same as my billing address</label>
-                    </div>
+                    </div> */}
 
-                    <div className="form-check">
-                        <input type="checkbox" className="form-check-input" id="save-info" />
-                        <label className="form-check-label" for="save-info">Save this information for next time</label>
-                    </div>
 
-                    <hr className="my-4" />
+                    {/* <hr className="my-4" />
 
                     <h4 className="mb-3">Payment</h4>
 
@@ -219,13 +213,13 @@ function Checkout(){
                             Security code required
                         </div>
                         </div>
-                    </div>
+                    </div> */}
                     <hr className="my-4" />
                     <button className="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
                     </form>
                 </div>
                 </div>
-            </main>
+            </main>}
         </div>
     )
 }
